@@ -22,7 +22,7 @@ public class Magazin extends Joc{
     @Override
     public String toString()
     {
-        String sr=super.toString();
+        String sr=joc.toString();
         sr+=" ID: ";sr+=ID;sr+=" in stock: ";
         if(stock==IN_STOCK)
         sr+=" da";

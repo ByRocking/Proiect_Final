@@ -1,23 +1,97 @@
 import GameStop.GameLogging;
+import GameStop.Joc;
+import GameStop.Magazin;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 
 public class MainForm {
     private JPanel rootPanel;
-    private JButton button1;
+    private JButton adaugaJocButton;
+    private JTextField textNume;
+    private JTextField textPublisher;
+    private JTextField textPret;
+    private JButton stergeJocButton;
+    private JCheckBox inStockCheckBox;
+    private JList Jlist1;
     public GameLogging log = GameLogging.getInstance();
+    ArrayList<Joc> game = new ArrayList<>();
+    ArrayList<Magazin> store=new ArrayList<>();
+    public static String NumeJoc;
+    public static String PublisherJoc;
+    public static int PretJoc;
+    public static int ID=0;
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            int d = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 
 
+    DefaultListModel dm = new DefaultListModel();
     public MainForm() {
-        button1.addActionListener(new ActionListener() {
+        adaugaJocButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                log.logare("Buton apasat");
+                boolean ok=true;
+                if (textNume.getText().equals("") || textPret.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Error, inserati valoare valida in Nume Joc", "Error", JOptionPane.OK_OPTION);
+                    ok=false;
+                } else {
+                    NumeJoc = textNume.getText();
+
+                }
+                if (textPublisher.getText().equals("") || textPret.getText() == null){
+                    JOptionPane.showMessageDialog(null, "Error, inserati valoare valida in Nume Publisher", "Error", JOptionPane.OK_OPTION);
+                    ok=false;
+                }
+                else
+                    PublisherJoc = textPublisher.getText();
+                if (textPret.getText().equals("") || textPret.getText() == null){
+                    JOptionPane.showMessageDialog(null, "Error, inserati valoare valida in Pret", "Error", JOptionPane.OK_OPTION);
+                    ok=false;
+                }
+                else if (isNumeric(textPret.getText()))
+                    PretJoc = Integer.parseInt(textPret.getText());
+                else{
+                    JOptionPane.showMessageDialog(null, "Error, inserati valoare valida in Pret", "Error", JOptionPane.OK_OPTION);
+                    ok=false;
+                }
+
+
+                boolean stock = inStockCheckBox.isSelected();
+                if(ok) {
+                    game.add(new Joc(NumeJoc, PublisherJoc, PretJoc));
+                    store.add(new Magazin(game.get(ID),stock,ID));
+                    ID++;
+                    Jlist1.setModel(dm);
+                    dm.addElement(store.get(store.size()-1).toString());
+                }
+
+            }
+        });
+        stergeJocButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int nr=Jlist1.getSelectedIndex();
+                dm.removeElementAt(nr);
+                store.remove(nr);
+                game.remove(nr);
+                ID--;
+                if(ID<0)
+                    ID=0;
             }
         });
     }
