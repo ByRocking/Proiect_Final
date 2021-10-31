@@ -31,5 +31,9 @@ public class Magazin extends Joc{
         return sr;
     }
 
-
+    @Override
+    public void Run() {
+        super.Run();
+        System.out.println("Store is staying");         //)))))
+    }
 }
