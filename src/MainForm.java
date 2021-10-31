@@ -31,6 +31,10 @@ public class MainForm {
     public static String PublisherJoc;
     public static int PretJoc;
     public static int ID=0;
+    String Textlog1;
+
+
+
 
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
@@ -50,6 +54,9 @@ public class MainForm {
         adaugaJocButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+
                 boolean ok=true;
                 if (textNume.getText().equals("") || textPret.getText() == null) {
                     JOptionPane.showMessageDialog(null, "Error, inserati valoare valida in Nume Joc", "Error", JOptionPane.OK_OPTION);
@@ -80,10 +87,15 @@ public class MainForm {
                 if(ok) {
                     game.add(new Joc(NumeJoc, PublisherJoc, PretJoc));
                     store.add(new Magazin(game.get(ID),stock,ID));
+                    Textlog1=game.get(ID).getNume();
+                    Textlog1 +=" Joc Creat si adaugat in lista";
+                    log.logare(Textlog1);
                     ID++;
                     Jlist1.setModel(dm);
                     dm.addElement(store.get(store.size()-1).toString());
                 }
+
+
 
             }
         });
@@ -94,6 +106,9 @@ public class MainForm {
                 dm.removeElementAt(nr);
                 store.remove(nr);
                 game.remove(nr);
+                Textlog1=game.get(ID).getNume();
+                Textlog1 +=" Jocul a fost sters cu succes";
+                log.logare(Textlog1);
                 ID--;
                 if(ID<0)
                     ID=0;
@@ -106,6 +121,9 @@ public class MainForm {
                 Jlist1.setModel(dm);
                 game.clear();
                 store.clear();
+
+                Textlog1 =" Toate jocurile au fost sterse cu succes";
+                log.logare(Textlog1);
                 ID=0;
             }
         });
@@ -115,7 +133,8 @@ public class MainForm {
             public void actionPerformed(ActionEvent e) {
                 FormReclamatii form2= new FormReclamatii();
                 form2.setvisible();
-
+                Textlog1 =" Deschidere FORM reclamatii";
+                log.logare(Textlog1);
             }
         });
         adaugareSugestiiButton.addActionListener(new ActionListener() {
@@ -123,6 +142,8 @@ public class MainForm {
             public void actionPerformed(ActionEvent e) {
                 FormSugestii form3 = new FormSugestii();
                 form3.setvisible();
+                Textlog1 =" Deschidere FORM sugestii";
+                log.logare(Textlog1);
             }
         });
     }
