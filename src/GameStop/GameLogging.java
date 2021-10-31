@@ -14,7 +14,7 @@ public class GameLogging {
 
      private GameLogging() {
 
-         sb.append("undefined");
+         sb.append("");
      }
 
      public static GameLogging getInstance() {
@@ -27,7 +27,7 @@ public class GameLogging {
      }
      public void logare(String text)
      {
-         sb.delete(0,sb.length());
+
          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
          LocalDateTime now = LocalDateTime.now();
          this.log=text;
@@ -43,6 +43,7 @@ public class GameLogging {
              System.out.println(e);
          }
          System.out.println("Loggat cu succes.");
+         sb.append("\n");
      }
 
 

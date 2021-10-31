@@ -13,7 +13,14 @@ public class MainForm {
     public GameLogging log = GameLogging.getInstance();
 
 
-
+    public MainForm() {
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                log.logare("Buton apasat");
+            }
+        });
+    }
 
     public static void main(String[] args) {
         JFrame frame=new JFrame("Inventar magazin");
