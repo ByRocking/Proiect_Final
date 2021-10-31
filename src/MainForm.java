@@ -118,6 +118,13 @@ public class MainForm {
 
             }
         });
+        adaugareSugestiiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormSugestii form3 = new FormSugestii();
+                form3.setvisible();
+            }
+        });
     }
 
     public static void main(String[] args) {
