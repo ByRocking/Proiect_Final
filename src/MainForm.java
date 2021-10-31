@@ -104,9 +104,10 @@ public class MainForm {
             public void actionPerformed(ActionEvent e) {
                 int nr=Jlist1.getSelectedIndex();
                 dm.removeElementAt(nr);
+                Textlog1=game.get(nr).getNume();
                 store.remove(nr);
                 game.remove(nr);
-                Textlog1=game.get(ID).getNume();
+
                 Textlog1 +=" Jocul a fost sters cu succes";
                 log.logare(Textlog1);
                 ID--;
