@@ -7,7 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Formattable;
 
 
 public class MainForm {
@@ -20,6 +22,8 @@ public class MainForm {
     private JCheckBox inStockCheckBox;
     private JList Jlist1;
     private JButton buttonStergeTot;
+    private JButton adaugareReclamatiiButton;
+    private JButton adaugareSugestiiButton;
     public GameLogging log = GameLogging.getInstance();
     ArrayList<Joc> game = new ArrayList<>();
     ArrayList<Magazin> store=new ArrayList<>();
@@ -103,6 +107,15 @@ public class MainForm {
                 game.clear();
                 store.clear();
                 ID=0;
+            }
+        });
+
+        adaugareReclamatiiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormReclamatii form2= new FormReclamatii();
+                form2.setvisible();
+
             }
         });
     }
