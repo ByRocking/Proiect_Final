@@ -1,6 +1,6 @@
 package GameStop;
 
-public class Joc implements IJoc {
+public class Joc extends Program implements IJoc {
 
 
     private String nume;
@@ -55,6 +55,9 @@ public class Joc implements IJoc {
         sb.append(pret);
         return sb.toString();
 
+    }
+    public void Run(){
+        System.out.println("Game is running!");
     }
 
 

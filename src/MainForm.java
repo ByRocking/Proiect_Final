@@ -19,6 +19,7 @@ public class MainForm {
     private JButton stergeJocButton;
     private JCheckBox inStockCheckBox;
     private JList Jlist1;
+    private JButton buttonStergeTot;
     public GameLogging log = GameLogging.getInstance();
     ArrayList<Joc> game = new ArrayList<>();
     ArrayList<Magazin> store=new ArrayList<>();
@@ -92,6 +93,16 @@ public class MainForm {
                 ID--;
                 if(ID<0)
                     ID=0;
+            }
+        });
+        buttonStergeTot.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dm.clear();;
+                Jlist1.setModel(dm);
+                game.clear();
+                store.clear();
+                ID=0;
             }
         });
     }
