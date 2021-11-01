@@ -132,25 +132,25 @@ public class MainForm {
         adaugareReclamatiiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FormReclamatii form2= new FormReclamatii();
+                FormReclamatii form2= new FormReclamatii();             // creare obiect tip form reclamatii si apelare la functia setvisible care afiseaza formul
                 form2.setvisible();
-                Textlog1 =" Deschidere FORM reclamatii";
+                Textlog1 =" Deschidere FORM reclamatii";                // logare
                 log.logare(Textlog1);
             }
         });
         adaugareSugestiiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FormSugestii form3 = new FormSugestii();
+                FormSugestii form3 = new FormSugestii();                // la fel ca si tip form reclamatii, dar sugestii
                 form3.setvisible();
                 Textlog1 =" Deschidere FORM sugestii";
-                log.logare(Textlog1);
+                log.logare(Textlog1);                                           // logare
             }
         });
     }
 
     public static void main(String[] args) {
-        JFrame frame=new JFrame("Inventar magazin");
+        JFrame frame=new JFrame("Inventar magazin");                        // creare Form principal
         frame.setContentPane(new MainForm().rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

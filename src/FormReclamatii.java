@@ -18,7 +18,7 @@ public class FormReclamatii extends MainForm {
             public void actionPerformed(ActionEvent e) {
                 String textR = textArea1.getText();
                 try {
-                    FileWriter fw = new FileWriter("Reclamatii.txt");
+                    FileWriter fw = new FileWriter("Reclamatii.txt");       // scriere in fisierul "Reclamatii.txt"
                     fw.append(textR);
                     fw.close();
                 } catch (Exception z) {
@@ -34,7 +34,7 @@ public class FormReclamatii extends MainForm {
     void setvisible(){
 
 
-       JFrame frame2= new JFrame("Reclamatii");
+       JFrame frame2= new JFrame("Reclamatii");         // functie pentru afisare form
        frame2.setContentPane(new FormReclamatii().rootPanel2);
        frame2.pack();
        frame2.setVisible(true);

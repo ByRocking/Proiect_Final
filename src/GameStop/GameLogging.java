@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class GameLogging {
+public class GameLogging {                  // clasa pentru logare de tip Singleton
      private static GameLogging instance;
      private String log;
      private StringBuffer sb = new StringBuffer();
 
 
-     private GameLogging() {
+     private GameLogging() {            // constructor privat
 
          sb.append("");
      }
@@ -25,14 +25,14 @@ public class GameLogging {
 
          return instance;
      }
-     public void logare(String text)
+     public void logare(String text)            // metoda pentru schimbarea variabilei din clasa
      {
 
-         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");        // creare format de data
          LocalDateTime now = LocalDateTime.now();
          this.log=text;
          try{
-             FileWriter fw= new FileWriter("Logging.log");
+             FileWriter fw= new FileWriter("Logging.log");          // scriere logare in fisierul Logging.log
              sb.append(dtf.format(now));
              sb.append(" ");
              sb.append(text);
@@ -42,7 +42,7 @@ public class GameLogging {
          {
              System.out.println(e);
          }
-         System.out.println("Loggat cu succes.");
+         System.out.println("Loggat cu succes.");           // mesaj de confirmare daca s-a reusit logarea
          sb.append("\n");
      }
 

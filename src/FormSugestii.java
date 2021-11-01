@@ -8,7 +8,7 @@ public class FormSugestii {
     private JTextArea textArea1;
     private JButton adaugaSugestiiButton;
 
-    void setvisible(){
+    void setvisible(){                      // functie pentru afisare form
 
 
         JFrame frame2= new JFrame("Sugestii");
@@ -23,7 +23,7 @@ public class FormSugestii {
             public void actionPerformed(ActionEvent e) {
                 String textS = textArea1.getText();
                 try {
-                    FileWriter fw = new FileWriter("Sugestii.txt");
+                    FileWriter fw = new FileWriter("Sugestii.txt");                 // scriere in fisierul "Sugestii.txt"
                     fw.append(textS);
                     fw.close();
                 } catch (Exception z) {

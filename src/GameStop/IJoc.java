@@ -1,6 +1,6 @@
 package GameStop;
 
-public interface IJoc {
+public interface IJoc {                               // interfata pentru clasa Joc
     void setNume(String _nume); //hatz
     String getNume();
     void setPublisher(String _publisher);
